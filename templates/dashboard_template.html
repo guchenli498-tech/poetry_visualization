@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>中华诗词山河文化地图</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #0f2d58, #061428 60%);
+      color: #d3e8ff;
+      padding: 20px;
+    }
+    .dashboard {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    header .title {
+      font-size: 28px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+    .time {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .stat-card {
+      background: rgba(18, 56, 110, 0.55);
+      border: 1px solid rgba(73, 155, 255, 0.4);
+      padding: 14px 18px;
+      border-radius: 8px;
+    }
+    .stat-title {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 24px;
+      font-weight: 600;
+      color: #41ffdc;
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr 320px;
+      grid-template-rows: auto auto auto;
+      gap: 16px;
+    }
+    .panel {
+      background: rgba(8, 33, 69, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(80, 165, 255, 0.4);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .panel h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #8ad7ff;
+    }
+    .map-panel {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .hot-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+    .hot-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(120, 180, 255, 0.3);
+      font-size: 13px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .hot-list li:hover {
+      color: #ffd166;
+    }
+    .chart-container {
+      background-color: #16213e;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-container iframe {
+      flex-grow: 1;
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+    .map-container {
+      width: 100%;
+      min-height: 520px;
+      display: flex;
+    }
+    .map-panel .chart-container {
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      min-height: 520px;
+    }
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <div class="title">中华诗词山河文化地图</div>
+      <div class="time">当前时间：{{ current_time }}</div>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-title">山河意象提及总次数</div>
+        <div class="stat-value">{{ overview.total_mentions }}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">识别地理实体数</div>
+        <div class="stat-value">{{ overview.unique_geos }}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">涉及诗人数</div>
+        <div class="stat-value">{{ overview.unique_poets }}</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <section class="panel map-panel">
+        <h3>诗词中的山河热度图</h3>
+        <div class="map-container">{{ map_chart | safe }}</div>
+      </section>
+
+      <section class="panel">
+        <h3>诗人共吟网络 <span id="network-location">（{{ default_location }}）</span></h3>
+        <div class="chart-container">{{ network_chart | safe }}</div>
+      </section>
+
+      <section class="panel">
+        <h3>山河情感分布 <span id="pie-location">（{{ default_location }}）</span></h3>
+        <div class="chart-container">{{ pie_chart | safe }}</div>
+      </section>
+
+      <section class="panel">
+        <h3>热门山河意象榜</h3>
+        <ul class="hot-list">
+          {% for item in hot_geos %}
+          <li class="hot-item" data-name="{{ item['名称'] }}">
+            <span>{{ loop.index }}. {{ item['名称'] }}</span>
+            <span>{{ item['总出现次数'] }} 次</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3>山河关联关键词云 <span id="wordcloud-location">（{{ default_location }}）</span></h3>
+        <div class="chart-container">{{ wordcloud_chart | safe }}</div>
+      </section>
+
+    </div>
+
+    <footer>数据来源：全唐诗、宋词等开放数据集；分析模型：jieba、SnowNLP；可视化：PyECharts</footer>
+  </div>
+  <script>
+    const locationDetails = {{ location_details | safe }};
+    let currentLocation = "{{ default_location }}";
+
+    function updateHeading(id, name) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.textContent = `（${name}）`;
+      }
+    }
+
+    function buildSentimentData(detail) {
+      const sentiments = detail.sentiments || {};
+      const items = Object.keys(sentiments).map(key => ({
+        name: key,
+        value: sentiments[key]
+      }));
+      return items.length ? items : [{ name: "暂无数据", value: 1 }];
+    }
+
+    function buildKeywordData(detail) {
+      const keywords = detail.keywords || [];
+      return keywords.length
+        ? keywords.map(item => ({ name: item.word, value: item.weight }))
+        : [{ name: "暂无数据", value: 1 }];
+    }
+
+    function buildPoetGraphData(detail) {
+      const poets = detail.poets || [];
+      return poets.length ? poets : [{ name: "数据不足", count: 0 }];
+    }
+
+    function updatePanels(name) {
+      const detail = locationDetails[name];
+      if (!detail) return;
+      currentLocation = name;
+
+      updateHeading("network-location", name);
+      updateHeading("pie-location", name);
+      updateHeading("wordcloud-location", name);
+
+      const pieData = buildSentimentData(detail);
+      if (typeof chart_sentiment_pie !== "undefined") {
+        chart_sentiment_pie.setOption({
+          title: { text: `${name} 情感分布` },
+          legend: { data: pieData.map(item => item.name) },
+          series: [{ data: pieData }]
+        });
+      }
+
+      const keywordData = buildKeywordData(detail);
+      if (typeof chart_keyword_cloud !== "undefined") {
+        chart_keyword_cloud.setOption({
+          title: { text: `${name} 关键词云` },
+          series: [{ data: keywordData }]
+        });
+      }
+
+      const poetData = buildPoetGraphData(detail);
+      if (typeof chart_poet_graph !== "undefined") {
+        const nodes = [{ name, value: detail.total || 0, symbolSize: 42, category: 0 }];
+        const links = [];
+        poetData.slice(0, 10).forEach(item => {
+          const size = Math.max(18, Math.min(18 + item.count * 2, 38));
+          nodes.push({ name: item.name, symbolSize: size, value: item.count, category: 1 });
+          links.push({ source: name, target: item.name, value: item.count });
+        });
+        if (nodes.length === 1) {
+          nodes.push({ name: "数据不足", symbolSize: 18, value: 0, category: 1 });
+          links.push({ source: name, target: "数据不足", value: 0 });
+        }
+        chart_poet_graph.setOption({
+          title: { text: `${name} 共吟网络` },
+          series: [{
+            data: nodes,
+            links: links,
+            categories: [{ name: "地点" }, { name: "诗人" }]
+          }]
+        });
+      }
+    }
+
+    if (typeof chart_geo_chart !== "undefined") {
+      chart_geo_chart.on("click", params => {
+        if (params && params.name && locationDetails[params.name]) {
+          updatePanels(params.name);
+        }
+      });
+    }
+
+    document.querySelectorAll(".hot-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const name = item.getAttribute("data-name");
+        if (name && locationDetails[name]) {
+          updatePanels(name);
+        }
+      });
+    });
+
+    updatePanels(currentLocation);
+  </script>
+  {{ scripts | safe }}
+</body>
+</html>

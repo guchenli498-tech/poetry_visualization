@@ -1,0 +1,372 @@
+{
+  "长安": {
+    "type": "城市",
+    "aliases": ["京兆", "镐京", "大兴城", "西京", "上都"],
+    "modern_name": "陕西西安"
+  },
+  "洛阳": {
+    "type": "城市",
+    "aliases": ["东都", "河南府", "雒阳"],
+    "modern_name": "河南洛阳"
+  },
+  "扬州": {
+    "type": "城市",
+    "aliases": ["广陵", "江都", "维扬"],
+    "modern_name": "江苏扬州"
+  },
+  "苏州": {
+    "type": "城市",
+    "aliases": ["姑苏", "吴门", "吴州"],
+    "modern_name": "江苏苏州"
+  },
+  "杭州": {
+    "type": "城市",
+    "aliases": ["临安", "钱塘", "武林"],
+    "modern_name": "浙江杭州"
+  },
+  "济南": {
+    "type": "城市",
+    "aliases": ["齐州", "泺水", "历下"],
+    "modern_name": "山东济南"
+  },
+  "成都": {
+    "type": "城市",
+    "aliases": ["锦官城", "成都府", "蜀都"],
+    "modern_name": "四川成都"
+  },
+  "重庆": {
+    "type": "城市",
+    "aliases": ["巴县", "江州", "渝州"],
+    "modern_name": "重庆"
+  },
+  "南京": {
+    "type": "城市",
+    "aliases": ["建康", "金陵", "石头城"],
+    "modern_name": "江苏南京"
+  },
+  "北平": {
+    "type": "城市",
+    "aliases": ["燕京", "大都", "京师", "顺天"],
+    "modern_name": "北京"
+  },
+  "临潼": {
+    "type": "城市",
+    "aliases": ["骊山", "骊邑"],
+    "modern_name": "陕西西安临潼区"
+  },
+  "襄阳": {
+    "type": "城市",
+    "aliases": ["襄樊", "襄州", "樊城"],
+    "modern_name": "湖北襄阳"
+  },
+  "荆州": {
+    "type": "城市",
+    "aliases": ["江陵", "江州"],
+    "modern_name": "湖北荆州"
+  },
+  "长沙": {
+    "type": "城市",
+    "aliases": ["潭州", "星城"],
+    "modern_name": "湖南长沙"
+  },
+  "桂林": {
+    "type": "城市",
+    "aliases": ["桂州", "临桂", "八桂"],
+    "modern_name": "广西桂林"
+  },
+  "泉州": {
+    "type": "城市",
+    "aliases": ["刺桐", "清源", "晋江"],
+    "modern_name": "福建泉州"
+  },
+  "广州": {
+    "type": "城市",
+    "aliases": ["番禺", "羊城", "岭南"],
+    "modern_name": "广东广州"
+  },
+  "福州": {
+    "type": "城市",
+    "aliases": ["闽都", "福城"],
+    "modern_name": "福建福州"
+  },
+  "开封": {
+    "type": "城市",
+    "aliases": ["汴京", "东京", "梁园"],
+    "modern_name": "河南开封"
+  },
+  "太原": {
+    "type": "城市",
+    "aliases": ["并州", "晋阳"],
+    "modern_name": "山西太原"
+  },
+  "潼关": {
+    "type": "关隘",
+    "aliases": ["潼闕"],
+    "modern_name": "陕西潼关县"
+  },
+  "玉门关": {
+    "type": "关隘",
+    "aliases": ["玉门"],
+    "modern_name": "甘肃敦煌玉门关遗址"
+  },
+  "嘉峪关": {
+    "type": "关隘",
+    "aliases": ["天下第一雄关"],
+    "modern_name": "甘肃嘉峪关"
+  },
+  "长城": {
+    "type": "军事设施",
+    "aliases": ["边墙", "万里长城"],
+    "modern_name": "中国长城"
+  },
+  "终南山": {
+    "type": "山脉",
+    "aliases": ["太乙山", "南山"],
+    "modern_name": "陕西西安终南山"
+  },
+  "华山": {
+    "type": "山脉",
+    "aliases": ["西岳"],
+    "modern_name": "陕西华阴华山"
+  },
+  "泰山": {
+    "type": "山脉",
+    "aliases": ["东岳", "岱宗"],
+    "modern_name": "山东泰安泰山"
+  },
+  "衡山": {
+    "type": "山脉",
+    "aliases": ["南岳"],
+    "modern_name": "湖南衡阳衡山"
+  },
+  "嵩山": {
+    "type": "山脉",
+    "aliases": ["中岳"],
+    "modern_name": "河南登封嵩山"
+  },
+  "武夷山": {
+    "type": "山脉",
+    "aliases": ["武夷", "三十六峰"],
+    "modern_name": "福建武夷山"
+  },
+  "庐山": {
+    "type": "山脉",
+    "aliases": ["匡庐", "匡山"],
+    "modern_name": "江西九江庐山"
+  },
+  "会稽山": {
+    "type": "山脉",
+    "aliases": ["会稽", "大禹山"],
+    "modern_name": "浙江绍兴会稽山"
+  },
+  "长江": {
+    "type": "河流",
+    "aliases": ["江", "扬子江", "大江"],
+    "modern_name": "长江"
+  },
+  "黄河": {
+    "type": "河流",
+    "aliases": ["大河", "河"],
+    "modern_name": "黄河"
+  },
+  "淮河": {
+    "type": "河流",
+    "aliases": ["淮水"],
+    "modern_name": "淮河"
+  },
+  "珠江": {
+    "type": "河流",
+    "aliases": ["广江", "粤江"],
+    "modern_name": "珠江"
+  },
+  "湘江": {
+    "type": "河流",
+    "aliases": ["潇湘", "湘水"],
+    "modern_name": "湖南湘江"
+  },
+  "闽江": {
+    "type": "河流",
+    "aliases": ["闽水"],
+    "modern_name": "福建闽江"
+  },
+  "渭河": {
+    "type": "河流",
+    "aliases": ["渭水"],
+    "modern_name": "陕西渭河"
+  },
+  "洛水": {
+    "type": "河流",
+    "aliases": ["洛河"],
+    "modern_name": "河南洛河"
+  },
+  "洞庭湖": {
+    "type": "湖泊",
+    "aliases": ["洞庭", "八百里洞庭"],
+    "modern_name": "湖南岳阳洞庭湖"
+  },
+  "太湖": {
+    "type": "湖泊",
+    "aliases": ["震泽", "笠泽"],
+    "modern_name": "江苏、浙江交界太湖"
+  },
+  "鄱阳湖": {
+    "type": "湖泊",
+    "aliases": ["彭蠡湖"],
+    "modern_name": "江西鄱阳湖"
+  },
+  "青海湖": {
+    "type": "湖泊",
+    "aliases": ["西海", "卑禾羌海"],
+    "modern_name": "青海青海湖"
+  },
+  "江南": {
+    "type": "地区",
+    "aliases": ["吴地", "三吴", "江东"],
+    "modern_name": "长江中下游南岸地区"
+  },
+  "江北": {
+    "type": "地区",
+    "aliases": ["淮北", "江北岸"],
+    "modern_name": "长江以北地区"
+  },
+  "关中": {
+    "type": "地区",
+    "aliases": ["三辅", "秦中"],
+    "modern_name": "陕西关中平原"
+  },
+  "巴蜀": {
+    "type": "地区",
+    "aliases": ["蜀中", "成都府", "巴渝"],
+    "modern_name": "四川盆地"
+  },
+  "岭南": {
+    "type": "地区",
+    "aliases": ["南越", "两广"],
+    "modern_name": "广东、广西一带"
+  },
+  "陇右": {
+    "type": "地区",
+    "aliases": ["陇西", "关陇"],
+    "modern_name": "甘肃东南部"
+  },
+  "辽东": {
+    "type": "地区",
+    "aliases": ["辽右", "营州"],
+    "modern_name": "辽宁中东部"
+  },
+  "江陵": {
+    "type": "城市",
+    "aliases": ["荆州", "楚都"],
+    "modern_name": "湖北荆州"
+  },
+  "金华": {
+    "type": "城市",
+    "aliases": ["婺州", "吴宁"],
+    "modern_name": "浙江金华"
+  },
+  "南昌": {
+    "type": "城市",
+    "aliases": ["豫章", "洪都"],
+    "modern_name": "江西南昌"
+  },
+  "襄樊": {
+    "type": "城市",
+    "aliases": ["襄阳", "樊城"],
+    "modern_name": "湖北襄阳"
+  },
+  "会同": {
+    "type": "地区",
+    "aliases": ["会同州", "黔阳"],
+    "modern_name": "湖南会同"
+  },
+  "雁门关": {
+    "type": "关隘",
+    "aliases": ["雁门"],
+    "modern_name": "山西代县雁门关"
+  },
+  "桃花源": {
+    "type": "地区",
+    "aliases": ["桃源"],
+    "modern_name": "湖南桃源县桃花源"
+  },
+  "兰亭": {
+    "type": "景点",
+    "aliases": ["兰亭序", "会稽兰亭"],
+    "modern_name": "浙江绍兴兰亭"
+  },
+  "少室山": {
+    "type": "山脉",
+    "aliases": ["少室", "嵩山少室"],
+    "modern_name": "河南登封少室山"
+  },
+  "沧州": {
+    "type": "城市",
+    "aliases": ["滄州", "河间"],
+    "modern_name": "河北沧州"
+  },
+  "潭州": {
+    "type": "城市",
+    "aliases": ["长沙", "星城"],
+    "modern_name": "湖南长沙"
+  },
+  "金陵": {
+    "type": "城市",
+    "aliases": ["南京", "建康"],
+    "modern_name": "江苏南京"
+  },
+  "建业": {
+    "type": "城市",
+    "aliases": ["建康", "南京"],
+    "modern_name": "江苏南京"
+  },
+  "武昌": {
+    "type": "城市",
+    "aliases": ["鄂州", "江夏"],
+    "modern_name": "湖北武汉武昌"
+  },
+  "庐州": {
+    "type": "城市",
+    "aliases": ["合肥", "合州"],
+    "modern_name": "安徽合肥"
+  },
+  "宣州": {
+    "type": "城市",
+    "aliases": ["宣城", "宣城郡"],
+    "modern_name": "安徽宣城"
+  },
+  "池州": {
+    "type": "城市",
+    "aliases": ["贵池"],
+    "modern_name": "安徽池州"
+  },
+  "泗州": {
+    "type": "城市",
+    "aliases": ["泗水", "盱眙"],
+    "modern_name": "安徽泗县一带"
+  },
+  "上饶": {
+    "type": "城市",
+    "aliases": ["饶州"],
+    "modern_name": "江西上饶"
+  },
+  "建昌": {
+    "type": "城市",
+    "aliases": ["建昌军", "南城"],
+    "modern_name": "江西南城"
+  },
+  "齐云山": {
+    "type": "山脉",
+    "aliases": ["白岳"],
+    "modern_name": "安徽黄山休宁齐云山"
+  },
+  "石鼓": {
+    "type": "景点",
+    "aliases": ["石鼓山"],
+    "modern_name": "湖南衡阳石鼓书院一带"
+  },
+  "岳阳楼": {
+    "type": "景点",
+    "aliases": ["巴陵楼"],
+    "modern_name": "湖南岳阳岳阳楼"
+  }
+}
