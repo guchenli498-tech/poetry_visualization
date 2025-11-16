@@ -136,6 +136,36 @@
       font-size: 12px;
       opacity: 0.6;
     }
+    .credits {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(8, 33, 69, 0.5);
+      border-radius: 8px;
+      border: 1px solid rgba(80, 165, 255, 0.3);
+      text-align: center;
+    }
+    .credits h4 {
+      font-size: 16px;
+      color: #8ad7ff;
+      margin-bottom: 12px;
+    }
+    .credits .group-name {
+      font-size: 14px;
+      color: #d3e8ff;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .credits .members {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: #b8d4ff;
+    }
+    .credits .member {
+      line-height: 1.6;
+    }
     .poetry-panel {
       margin-top: 16px;
       padding-top: 16px;
@@ -298,6 +328,17 @@
     </div>
 
     <footer>数据来源：全唐诗、宋词等开放数据集；分析模型：jieba、SnowNLP；可视化：PyECharts</footer>
+    
+    <div class="credits">
+      <h4>制作组名单</h4>
+      <div class="group-name">14组</div>
+      <div class="members">
+        <div class="member">朱宝仪 2024301021152</div>
+        <div class="member">张健楠 2024301021053</div>
+        <div class="member">杨智明 2024301021157</div>
+        <div class="member">杨淇超 2024301021098</div>
+      </div>
+    </div>
   </div>
   <script>
     const locationDetails = {{ location_details | safe }};

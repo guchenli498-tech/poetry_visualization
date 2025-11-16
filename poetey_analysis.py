@@ -1026,7 +1026,7 @@ def export_analysis_outputs(poem_results, author_trajectories, coordinate_map):
 
 def main():
     # 加载诗词数据
-    poems = load_poetry_from_local(max_poems=500)
+    poems = load_poetry_from_local(max_poems=50000)
 
     if not poems:
         print("未找到诗词数据，请确认数据集是否已下载。")
