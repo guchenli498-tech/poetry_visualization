@@ -368,5 +368,540 @@
     "type": "景点",
     "aliases": ["巴陵楼"],
     "modern_name": "湖南岳阳岳阳楼"
+  },
+  "阴山": {
+    "type": "山脉",
+    "aliases": ["大青山", "阴山山脉"],
+    "modern_name": "内蒙古阴山"
+  },
+  "贺兰山": {
+    "type": "山脉",
+    "aliases": ["贺兰", "阿拉善山"],
+    "modern_name": "宁夏贺兰山"
+  },
+  "大漠": {
+    "type": "地区",
+    "aliases": ["沙漠", "戈壁"],
+    "modern_name": "内蒙古、新疆沙漠地区"
+  },
+  "塞外": {
+    "type": "地区",
+    "aliases": ["塞北", "关外"],
+    "modern_name": "长城以北地区"
+  },
+  "漠北": {
+    "type": "地区",
+    "aliases": ["大漠以北", "外蒙古"],
+    "modern_name": "蒙古高原北部"
+  },
+  "凉州": {
+    "type": "城市",
+    "aliases": ["武威", "姑臧"],
+    "modern_name": "甘肃武威"
+  },
+  "兰州": {
+    "type": "城市",
+    "aliases": ["金城", "兰县"],
+    "modern_name": "甘肃兰州"
+  },
+  "西宁": {
+    "type": "城市",
+    "aliases": ["西平", "湟中"],
+    "modern_name": "青海西宁"
+  },
+  "银川": {
+    "type": "城市",
+    "aliases": ["兴庆", "宁夏"],
+    "modern_name": "宁夏银川"
+  },
+  "乌鲁木齐": {
+    "type": "城市",
+    "aliases": ["迪化", "红庙子"],
+    "modern_name": "新疆乌鲁木齐"
+  },
+  "拉萨": {
+    "type": "城市",
+    "aliases": ["逻些", "日光城"],
+    "modern_name": "西藏拉萨"
+  },
+  "昆明": {
+    "type": "城市",
+    "aliases": ["滇池", "春城"],
+    "modern_name": "云南昆明"
+  },
+  "贵阳": {
+    "type": "城市",
+    "aliases": ["筑城", "贵筑"],
+    "modern_name": "贵州贵阳"
+  },
+  "哈尔滨": {
+    "type": "城市",
+    "aliases": ["冰城", "滨江"],
+    "modern_name": "黑龙江哈尔滨"
+  },
+  "长春": {
+    "type": "城市",
+    "aliases": ["春城", "宽城子"],
+    "modern_name": "吉林长春"
+  },
+  "沈阳": {
+    "type": "城市",
+    "aliases": ["盛京", "奉天"],
+    "modern_name": "辽宁沈阳"
+  },
+  "呼和浩特": {
+    "type": "城市",
+    "aliases": ["归绥", "青城"],
+    "modern_name": "内蒙古呼和浩特"
+  },
+  "包头": {
+    "type": "城市",
+    "aliases": ["九原", "鹿城"],
+    "modern_name": "内蒙古包头"
+  },
+  "鄂尔多斯": {
+    "type": "城市",
+    "aliases": ["东胜"],
+    "modern_name": "内蒙古鄂尔多斯"
+  },
+  "天山": {
+    "type": "山脉",
+    "aliases": ["天山山脉"],
+    "modern_name": "新疆天山"
+  },
+  "昆仑山": {
+    "type": "山脉",
+    "aliases": ["昆仑", "万山之祖"],
+    "modern_name": "新疆、西藏、青海昆仑山"
+  },
+  "祁连山": {
+    "type": "山脉",
+    "aliases": ["祁连", "南山"],
+    "modern_name": "甘肃、青海祁连山"
+  },
+  "大兴安岭": {
+    "type": "山脉",
+    "aliases": ["大鲜卑山"],
+    "modern_name": "内蒙古、黑龙江大兴安岭"
+  },
+  "小兴安岭": {
+    "type": "山脉",
+    "aliases": ["小兴安"],
+    "modern_name": "黑龙江小兴安岭"
+  },
+  "塔里木河": {
+    "type": "河流",
+    "aliases": ["塔河"],
+    "modern_name": "新疆塔里木河"
+  },
+  "雅鲁藏布江": {
+    "type": "河流",
+    "aliases": ["藏布江"],
+    "modern_name": "西藏雅鲁藏布江"
+  },
+  "松花江": {
+    "type": "河流",
+    "aliases": ["松江"],
+    "modern_name": "黑龙江、吉林松花江"
+  },
+  "黑龙江": {
+    "type": "河流",
+    "aliases": ["黑水", "阿穆尔河"],
+    "modern_name": "黑龙江"
+  },
+  "吐鲁番": {
+    "type": "城市",
+    "aliases": ["火州", "高昌"],
+    "modern_name": "新疆吐鲁番"
+  },
+  "喀什": {
+    "type": "城市",
+    "aliases": ["喀什噶尔", "疏勒"],
+    "modern_name": "新疆喀什"
+  },
+  "伊犁": {
+    "type": "地区",
+    "aliases": ["伊犁河谷", "伊犁州"],
+    "modern_name": "新疆伊犁"
+  },
+  "哈密": {
+    "type": "城市",
+    "aliases": ["伊州"],
+    "modern_name": "新疆哈密"
+  },
+  "和田": {
+    "type": "城市",
+    "aliases": ["于阗", "和阗"],
+    "modern_name": "新疆和田"
+  },
+  "库尔勒": {
+    "type": "城市",
+    "aliases": ["焉耆"],
+    "modern_name": "新疆库尔勒"
+  },
+  "阿克苏": {
+    "type": "城市",
+    "aliases": ["温宿"],
+    "modern_name": "新疆阿克苏"
+  },
+  "塔克拉玛干": {
+    "type": "地区",
+    "aliases": ["塔克拉玛干沙漠", "死亡之海"],
+    "modern_name": "新疆塔克拉玛干沙漠"
+  },
+  "珠穆朗玛峰": {
+    "type": "山脉",
+    "aliases": ["珠峰", "圣母峰"],
+    "modern_name": "西藏珠穆朗玛峰"
+  },
+  "日喀则": {
+    "type": "城市",
+    "aliases": ["后藏", "年楚"],
+    "modern_name": "西藏日喀则"
+  },
+  "林芝": {
+    "type": "城市",
+    "aliases": ["工布", "尼洋"],
+    "modern_name": "西藏林芝"
+  },
+  "那曲": {
+    "type": "城市",
+    "aliases": ["那曲地区", "羌塘"],
+    "modern_name": "西藏那曲"
+  },
+  "昌都": {
+    "type": "城市",
+    "aliases": ["察木多", "康区"],
+    "modern_name": "西藏昌都"
+  },
+  "纳木错": {
+    "type": "湖泊",
+    "aliases": ["纳木措", "天湖"],
+    "modern_name": "西藏纳木错"
+  },
+  "羊卓雍错": {
+    "type": "湖泊",
+    "aliases": ["羊湖", "羊卓雍措"],
+    "modern_name": "西藏羊卓雍错"
+  },
+  "齐齐哈尔": {
+    "type": "城市",
+    "aliases": ["卜奎", "龙江"],
+    "modern_name": "黑龙江齐齐哈尔"
+  },
+  "大庆": {
+    "type": "城市",
+    "aliases": ["萨尔图"],
+    "modern_name": "黑龙江大庆"
+  },
+  "牡丹江": {
+    "type": "城市",
+    "aliases": ["牡丹江", "宁古塔"],
+    "modern_name": "黑龙江牡丹江"
+  },
+  "佳木斯": {
+    "type": "城市",
+    "aliases": ["东佳木斯"],
+    "modern_name": "黑龙江佳木斯"
+  },
+  "黑河": {
+    "type": "城市",
+    "aliases": ["瑷珲", "爱辉"],
+    "modern_name": "黑龙江黑河"
+  },
+  "漠河": {
+    "type": "城市",
+    "aliases": ["北极村"],
+    "modern_name": "黑龙江漠河"
+  },
+  "延边": {
+    "type": "地区",
+    "aliases": ["延吉", "延边州"],
+    "modern_name": "吉林延边"
+  },
+  "通化": {
+    "type": "城市",
+    "aliases": ["通化"],
+    "modern_name": "吉林通化"
+  },
+  "大连": {
+    "type": "城市",
+    "aliases": ["旅顺", "大连湾"],
+    "modern_name": "辽宁大连"
+  },
+  "鞍山": {
+    "type": "城市",
+    "aliases": ["鞍山"],
+    "modern_name": "辽宁鞍山"
+  },
+  "锦州": {
+    "type": "城市",
+    "aliases": ["锦州"],
+    "modern_name": "辽宁锦州"
+  },
+  "赤峰": {
+    "type": "城市",
+    "aliases": ["赤峰", "昭乌达"],
+    "modern_name": "内蒙古赤峰"
+  },
+  "通辽": {
+    "type": "城市",
+    "aliases": ["通辽"],
+    "modern_name": "内蒙古通辽"
+  },
+  "呼伦贝尔": {
+    "type": "地区",
+    "aliases": ["呼伦贝尔草原", "海拉尔"],
+    "modern_name": "内蒙古呼伦贝尔"
+  },
+  "锡林郭勒": {
+    "type": "地区",
+    "aliases": ["锡林郭勒草原", "锡林浩特"],
+    "modern_name": "内蒙古锡林郭勒"
+  },
+  "格尔木": {
+    "type": "城市",
+    "aliases": ["格尔木"],
+    "modern_name": "青海格尔木"
+  },
+  "德令哈": {
+    "type": "城市",
+    "aliases": ["德令哈"],
+    "modern_name": "青海德令哈"
+  },
+  "张掖": {
+    "type": "城市",
+    "aliases": ["甘州", "张掖"],
+    "modern_name": "甘肃张掖"
+  },
+  "酒泉": {
+    "type": "城市",
+    "aliases": ["肃州", "酒泉"],
+    "modern_name": "甘肃酒泉"
+  },
+  "敦煌": {
+    "type": "城市",
+    "aliases": ["沙州", "敦煌"],
+    "modern_name": "甘肃敦煌"
+  },
+  "天水": {
+    "type": "城市",
+    "aliases": ["秦州", "天水"],
+    "modern_name": "甘肃天水"
+  },
+  "大理": {
+    "type": "城市",
+    "aliases": ["大理", "南诏"],
+    "modern_name": "云南大理"
+  },
+  "丽江": {
+    "type": "城市",
+    "aliases": ["丽江", "大研"],
+    "modern_name": "云南丽江"
+  },
+  "西双版纳": {
+    "type": "地区",
+    "aliases": ["版纳", "勐腊"],
+    "modern_name": "云南西双版纳"
+  },
+  "遵义": {
+    "type": "城市",
+    "aliases": ["遵义", "播州"],
+    "modern_name": "贵州遵义"
+  },
+  "都江堰": {
+    "type": "景点",
+    "aliases": ["都江堰", "灌县"],
+    "modern_name": "四川都江堰"
+  },
+  "乐山": {
+    "type": "城市",
+    "aliases": ["嘉州", "乐山"],
+    "modern_name": "四川乐山"
+  },
+  "绵阳": {
+    "type": "城市",
+    "aliases": ["绵州", "涪城"],
+    "modern_name": "四川绵阳"
+  },
+  "汉中": {
+    "type": "城市",
+    "aliases": ["汉中", "南郑"],
+    "modern_name": "陕西汉中"
+  },
+  "延安": {
+    "type": "城市",
+    "aliases": ["延州", "延安"],
+    "modern_name": "陕西延安"
+  },
+  "榆林": {
+    "type": "城市",
+    "aliases": ["榆林", "上郡"],
+    "modern_name": "陕西榆林"
+  },
+  "大同": {
+    "type": "城市",
+    "aliases": ["云中", "平城"],
+    "modern_name": "山西大同"
+  },
+  "平遥": {
+    "type": "城市",
+    "aliases": ["平遥", "古陶"],
+    "modern_name": "山西平遥"
+  },
+  "承德": {
+    "type": "城市",
+    "aliases": ["承德", "热河"],
+    "modern_name": "河北承德"
+  },
+  "保定": {
+    "type": "城市",
+    "aliases": ["保定", "保州"],
+    "modern_name": "河北保定"
+  },
+  "邯郸": {
+    "type": "城市",
+    "aliases": ["邯郸", "邺城"],
+    "modern_name": "河北邯郸"
+  },
+  "安阳": {
+    "type": "城市",
+    "aliases": ["安阳", "殷都"],
+    "modern_name": "河南安阳"
+  },
+  "曲阜": {
+    "type": "城市",
+    "aliases": ["曲阜", "鲁国"],
+    "modern_name": "山东曲阜"
+  },
+  "青岛": {
+    "type": "城市",
+    "aliases": ["青岛", "胶澳"],
+    "modern_name": "山东青岛"
+  },
+  "烟台": {
+    "type": "城市",
+    "aliases": ["烟台", "登州"],
+    "modern_name": "山东烟台"
+  },
+  "无锡": {
+    "type": "城市",
+    "aliases": ["无锡", "梁溪"],
+    "modern_name": "江苏无锡"
+  },
+  "常州": {
+    "type": "城市",
+    "aliases": ["常州", "延陵"],
+    "modern_name": "江苏常州"
+  },
+  "镇江": {
+    "type": "城市",
+    "aliases": ["镇江", "润州"],
+    "modern_name": "江苏镇江"
+  },
+  "宁波": {
+    "type": "城市",
+    "aliases": ["宁波", "明州"],
+    "modern_name": "浙江宁波"
+  },
+  "温州": {
+    "type": "城市",
+    "aliases": ["温州", "永嘉"],
+    "modern_name": "浙江温州"
+  },
+  "嘉兴": {
+    "type": "城市",
+    "aliases": ["嘉兴", "秀州"],
+    "modern_name": "浙江嘉兴"
+  },
+  "黄山": {
+    "type": "山脉",
+    "aliases": ["黄山", "徽州"],
+    "modern_name": "安徽黄山"
+  },
+  "九华山": {
+    "type": "山脉",
+    "aliases": ["九华", "九子山"],
+    "modern_name": "安徽九华山"
+  },
+  "天柱山": {
+    "type": "山脉",
+    "aliases": ["天柱", "皖山"],
+    "modern_name": "安徽天柱山"
+  },
+  "景德镇": {
+    "type": "城市",
+    "aliases": ["景德镇", "昌南"],
+    "modern_name": "江西景德镇"
+  },
+  "九江": {
+    "type": "城市",
+    "aliases": ["九江", "浔阳"],
+    "modern_name": "江西九江"
+  },
+  "武当山": {
+    "type": "山脉",
+    "aliases": ["武当", "太和山"],
+    "modern_name": "湖北武当山"
+  },
+  "神农架": {
+    "type": "地区",
+    "aliases": ["神农架", "华中屋脊"],
+    "modern_name": "湖北神农架"
+  },
+  "张家界": {
+    "type": "地区",
+    "aliases": ["张家界", "大庸"],
+    "modern_name": "湖南张家界"
+  },
+  "衡阳": {
+    "type": "城市",
+    "aliases": ["衡阳", "衡州"],
+    "modern_name": "湖南衡阳"
+  },
+  "岳阳": {
+    "type": "城市",
+    "aliases": ["岳阳", "巴陵"],
+    "modern_name": "湖南岳阳"
+  },
+  "武夷山": {
+    "type": "山脉",
+    "aliases": ["武夷", "三十六峰"],
+    "modern_name": "福建武夷山"
+  },
+  "厦门": {
+    "type": "城市",
+    "aliases": ["厦门", "鹭岛"],
+    "modern_name": "福建厦门"
+  },
+  "汕头": {
+    "type": "城市",
+    "aliases": ["汕头", "鮀城"],
+    "modern_name": "广东汕头"
+  },
+  "珠海": {
+    "type": "城市",
+    "aliases": ["珠海", "香洲"],
+    "modern_name": "广东珠海"
+  },
+  "深圳": {
+    "type": "城市",
+    "aliases": ["深圳", "鹏城"],
+    "modern_name": "广东深圳"
+  },
+  "桂林": {
+    "type": "城市",
+    "aliases": ["桂州", "临桂", "八桂"],
+    "modern_name": "广西桂林"
+  },
+  "柳州": {
+    "type": "城市",
+    "aliases": ["柳州", "龙城"],
+    "modern_name": "广西柳州"
+  },
+  "北海": {
+    "type": "城市",
+    "aliases": ["北海", "合浦"],
+    "modern_name": "广西北海"
   }
 }

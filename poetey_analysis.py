@@ -11,7 +11,25 @@ from tqdm import tqdm
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-EXCLUDED_NAMES = {"千山","江山","山林","青山", "四海", "江湖", "山川","山河","西山","东山","天下", "九州", "五湖", "六合", "八荒", "九域", "四方", "宇内", "寰中", "江表", "河朔", "塞北", "岭南", "漠北", "中原", "南疆", "北疆", "关内", "关外", "河东", "河西", "山南", "山北", "淮左", "淮右", "山水", "四面山", "山河大地", "山阜", "峽山", "峡山", "河明", "浮川", "居海", "如海", "福海", "海陽", "海國", "海霧江", "湖江", "北湖", "青草湖", "柳邊湖", "明河", "陂湖", "好山", "山開南國", "莫指雲山", "中峰", "中台", "陽洲", "花洲", "四海九州"}
+EXCLUDED_NAMES = {
+    # 抽象概念和通用词
+    "千山","江山","山林","青山", "四海", "江湖", "山川","山河","西山","东山","天下", 
+    "九州", "五湖", "六合", "八荒", "九域", "四方", "宇内", "寰中", "江表", "河朔", 
+    "塞北", "岭南", "漠北", "中原", "南疆", "北疆", "关内", "关外", "河东", "河西", 
+    "山南", "山北", "淮左", "淮右", "山水", "四面山", "山河大地", "山阜", "峽山", 
+    "峡山", "河明", "浮川", "居海", "如海", "福海", "海陽", "海國", "海霧江", "湖江", 
+    "北湖", "青草湖", "柳邊湖", "明河", "陂湖", "好山", "山開南國", "莫指雲山", 
+    "中峰", "中台", "陽洲", "花洲", "四海九州",
+    # 单字通用词（这些不应该作为具体地名）
+    "山", "城", "州", "溪", "湖", "川", "谷", "原", "津", "郡", "海", "江", "河",
+    "香", "華", "東", "西", "南", "北", "中", "上", "下", "大", "小", "新", "舊",
+    # 抽象概念
+    "千古", "太平", "南北", "東西", "雲水", "東坡",
+    # 误识别的通用词（从数据分析中发现）
+    "東山", "牡丹", "雲", "南國", "河漢", "中興", "溪山", "四壁", "漠漠", "江城",
+    "英雄", "青春", "北山", "江海", "美", "雲山", "西北", "湖山", "印", "南泉",
+    "山寺", "江西", "甘泉", "重陽", "三山", "西園", "陰陽", "江水", "池塘", "雲門"
+}
 
 class PoetryAnalyzer:
     def __init__(self):
@@ -629,11 +647,96 @@ def load_poetry_from_local(max_poems=10000):
     return poems
 
 
-def aggregate_geo_statistics(poem_results, coordinate_map):
+def extract_poetry_quote_with_geo(poem_content, geo_name, geo_aliases, title, author):
     """
-    汇总地理实体统计数据
+    提取包含地名的诗句片段
+    
+    Args:
+        poem_content: 诗词内容（字符串）
+        geo_name: 地名
+        geo_aliases: 地名的别名列表
+        title: 诗名
+        author: 诗人
+    
+    Returns:
+        包含地名的诗句片段列表，格式：[{"诗句": "...", "诗人": "...", "诗名": "..."}]
+    """
+    quotes = []
+    if not poem_content or not geo_name:
+        return quotes
+    
+    # 构建所有可能的名称（包括别名），按长度从长到短排序，优先匹配长名称
+    all_names = [geo_name] + (geo_aliases if geo_aliases else [])
+    all_names = sorted(set(all_names), key=len, reverse=True)  # 去重并按长度排序
+    
+    # 按句分割（逗号、句号、问号、感叹号等）
+    sentences = re.split(r'[，。！？；\n]', poem_content)
+    
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if not sentence:
+            continue
+        
+        # 检查是否包含地名（包括别名），优先匹配长名称
+        found_geo = None
+        for name in all_names:
+            # 对于单字别名（如"河"、"江"），需要更严格的匹配
+            # 只有当它是原文中出现的形式时，才匹配（避免误匹配）
+            if len(name) == 1:
+                # 单字匹配：检查是否是原文中出现的形式
+                # 如果all_names中包含这个单字，说明它是原文中出现的形式，可以匹配
+                if name in sentence:
+                    found_geo = name
+                    break
+            else:
+                # 多字匹配：直接匹配（已经按长度排序，优先匹配长名称）
+                if name in sentence:
+                    found_geo = name
+                    break
+        
+        if found_geo:
+            # 提取包含地名的半句
+            # 如果地名在句子中间，取整句；如果在开头或结尾，取包含地名的部分
+            quote_text = sentence
+            
+            # 去重：检查是否已存在相同的诗句
+            is_duplicate = False
+            for existing in quotes:
+                if existing["诗句"] == quote_text and existing["诗人"] == author and existing["诗名"] == title:
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                quotes.append({
+                    "诗句": quote_text,
+                    "诗人": author,
+                    "诗名": title
+                })
+    
+    return quotes
+
+
+def aggregate_geo_statistics(poem_results, coordinate_map, geo_entities_dict=None):
+    """
+    汇总地理实体统计数据，同时收集诗句片段
+    
+    Args:
+        poem_results: 诗词分析结果列表
+        coordinate_map: 坐标映射字典
+        geo_entities_dict: 地理实体字典，用于获取别名信息
     """
     stats = {}
+    poetry_quotes_by_geo = defaultdict(list)  # 存储每个地名对应的诗句
+    
+    # 加载地理实体字典（如果未提供）
+    if geo_entities_dict is None:
+        geo_entities_path = os.path.join(DATA_DIR, "geo_entities.json")
+        if os.path.exists(geo_entities_path):
+            try:
+                with open(geo_entities_path, "r", encoding="utf-8") as f:
+                    geo_entities_dict = json.load(f)
+            except Exception:
+                geo_entities_dict = {}
 
     for poem in poem_results:
         dynasty = poem.get("dynasty", "未知")
@@ -641,11 +744,41 @@ def aggregate_geo_statistics(poem_results, coordinate_map):
         sentiment_label = poem["sentiment"]["情感类型"]
         base_score = poem["sentiment"]["基础得分"]
         content = poem.get("content", "")
+        title = poem.get("title", "未知")
 
         for geo in poem.get("geo_entities", []):
             name = geo["名称"]
             if name in EXCLUDED_NAMES:
                 continue
+            
+            # 获取别名，包括原文中出现的形式
+            # 如果原文中出现的是别名（如"河"），我们也需要匹配它
+            geo_aliases = []
+            if geo_entities_dict and name in geo_entities_dict:
+                raw_aliases = geo_entities_dict[name].get("aliases", [])
+                # 保留所有别名，包括单字别名（因为如果原文中出现"河"被识别为"黄河"，我们也需要提取它）
+                geo_aliases = raw_aliases.copy()
+            
+            # 同时，如果原文中出现的形式不是主名称，也要加入别名列表
+            original_forms = list(geo.get("原文出现", []))
+            for orig_form in original_forms:
+                if orig_form != name and orig_form not in geo_aliases:
+                    geo_aliases.append(orig_form)
+            
+            # 提取包含地名的诗句片段（匹配主名称和所有别名，包括原文中出现的形式）
+            quotes = extract_poetry_quote_with_geo(content, name, geo_aliases, title, author)
+            for quote in quotes:
+                # 去重：检查是否已存在相同的诗句
+                is_duplicate = False
+                for existing in poetry_quotes_by_geo[name]:
+                    if (existing["诗句"] == quote["诗句"] and 
+                        existing["诗人"] == quote["诗人"] and 
+                        existing["诗名"] == quote["诗名"]):
+                        is_duplicate = True
+                        break
+                if not is_duplicate:
+                    poetry_quotes_by_geo[name].append(quote)
+            
             entry = stats.setdefault(
                 name,
                 {
@@ -689,8 +822,34 @@ def aggregate_geo_statistics(poem_results, coordinate_map):
     sentiment_trend = []
     keyword_clouds = []
 
+    # 改进坐标匹配：处理繁体字、别名等
+    def find_coordinates(geo_name, modern_name, coord_map):
+        """智能查找坐标，支持繁体字、别名等"""
+        # 1. 直接匹配
+        if geo_name in coord_map:
+            return coord_map[geo_name]
+        if modern_name and modern_name in coord_map:
+            return coord_map[modern_name]
+        
+        # 2. 繁体字转换匹配（常见繁体字映射）
+        traditional_to_simplified = {
+            "長": "长", "安": "安", "揚": "扬", "蘇": "苏", "廬": "庐",
+            "華": "华", "東": "东", "嶺": "岭", "關": "关", "縣": "县",
+            "陽": "阳", "陰": "阴", "雲": "云", "風": "风", "龍": "龙"
+        }
+        simplified_name = geo_name
+        for trad, simp in traditional_to_simplified.items():
+            simplified_name = simplified_name.replace(trad, simp)
+        if simplified_name != geo_name and simplified_name in coord_map:
+            return coord_map[simplified_name]
+        
+        # 3. 通过别名匹配（如果geo_entities中有别名信息）
+        # 这里可以扩展，从geo_entities中查找别名
+        
+        return None
+    
     for name, entry in stats.items():
-        coords = coordinate_map.get(name) or coordinate_map.get(entry["现代对应"])
+        coords = find_coordinates(name, entry["现代对应"], coordinate_map)
         avg_score = (
             entry["情感分数累计"] / entry["情感样本数"]
             if entry["情感样本数"]
@@ -749,7 +908,24 @@ def aggregate_geo_statistics(poem_results, coordinate_map):
             }
         )
 
-    return geo_stats, sentiment_trend, keyword_clouds
+    # 对每个地名的诗句进行随机排序
+    for name in poetry_quotes_by_geo:
+        random.shuffle(poetry_quotes_by_geo[name])
+    
+    # 转换为普通字典并过滤掉没有诗句的地名
+    poetry_quotes_dict = {
+        name: quotes 
+        for name, quotes in poetry_quotes_by_geo.items() 
+        if quotes  # 只保留有诗句的地名
+    }
+    
+    # 过滤geo_stats，只保留有诗句的地名
+    geo_names_with_quotes = set(poetry_quotes_dict.keys())
+    geo_stats_filtered = [stat for stat in geo_stats if stat["名称"] in geo_names_with_quotes]
+    sentiment_trend_filtered = [trend for trend in sentiment_trend if trend["名称"] in geo_names_with_quotes]
+    keyword_clouds_filtered = [cloud for cloud in keyword_clouds if cloud["名称"] in geo_names_with_quotes]
+
+    return geo_stats_filtered, sentiment_trend_filtered, keyword_clouds_filtered, poetry_quotes_dict
 
 
 def build_poet_paths(author_trajectories, coordinate_map):
@@ -814,14 +990,27 @@ def export_analysis_outputs(poem_results, author_trajectories, coordinate_map):
     output_dir = os.path.join(BASE_DIR, "output")
     os.makedirs(output_dir, exist_ok=True)
 
-    geo_stats, sentiment_trend, keyword_clouds = aggregate_geo_statistics(poem_results, coordinate_map)
+    # 加载地理实体字典以获取别名信息
+    geo_entities_path = os.path.join(DATA_DIR, "geo_entities.json")
+    geo_entities_dict = {}
+    if os.path.exists(geo_entities_path):
+        try:
+            with open(geo_entities_path, "r", encoding="utf-8") as f:
+                geo_entities_dict = json.load(f)
+        except Exception:
+            pass
+    
+    geo_stats, sentiment_trend, keyword_clouds, poetry_quotes_by_geo = aggregate_geo_statistics(
+        poem_results, coordinate_map, geo_entities_dict
+    )
     poet_paths = build_poet_paths(author_trajectories, coordinate_map)
 
     outputs = {
         "geo_stats.json": geo_stats,
         "sentiment_trend.json": sentiment_trend,
         "keyword_clouds.json": keyword_clouds,
-        "poet_paths.json": poet_paths
+        "poet_paths.json": poet_paths,
+        "poetry_quotes_by_geo.json": poetry_quotes_by_geo
     }
 
     for filename, data in outputs.items():
@@ -837,7 +1026,7 @@ def export_analysis_outputs(poem_results, author_trajectories, coordinate_map):
 
 def main():
     # 加载诗词数据
-    poems = load_poetry_from_local(max_poems=10000)
+    poems = load_poetry_from_local(max_poems=500)
 
     if not poems:
         print("未找到诗词数据，请确认数据集是否已下载。")

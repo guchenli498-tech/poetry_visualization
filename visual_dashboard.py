@@ -383,6 +383,17 @@ def build_dashboard():
     overview = compute_overview_stats(geo_stats)
     now_str = datetime.now().strftime("%Y年%m月%d日 %H:%M:%S")
 
+    # 读取诗句数据
+    poetry_quotes_data = {}
+    poetry_quotes_path = os.path.join(OUTPUT_DIR, "poetry_quotes_by_geo.json")
+    if os.path.exists(poetry_quotes_path):
+        try:
+            with open(poetry_quotes_path, "r", encoding="utf-8") as f:
+                poetry_quotes_data = json.load(f)
+        except Exception as exc:
+            print(f"读取诗句数据失败：{exc}")
+            poetry_quotes_data = {}
+
     context = {
         "scripts": scripts,
         **chart_embeds,
@@ -390,7 +401,8 @@ def build_dashboard():
         "current_time": now_str,
         "default_location": default_location,
         "location_details": json.dumps(location_details, ensure_ascii=False),
-        "hot_geos": select_hot_geos(geo_stats, limit=8)
+        "hot_geos": select_hot_geos(geo_stats, limit=8),
+        "poetry_quotes_by_geo": json.dumps(poetry_quotes_data, ensure_ascii=False)
     }
 
     output_path = os.path.join(OUTPUT_DIR, "poetry_dashboard.html")
